@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="http://localhost:4000/socket.io/socket.io.js"></script>
+        <script>
+            const socket = io("ws://localhost:4000", {
+                reconnectionDelayMax: 10000,
+                auth: {user: {"id":145,"name":"Teacher One","email":"TeacherOne@yopmail.com","logged_in_as":"teacher","is_active":1,"country_id":null,"email_verified_at":"2025-04-25T08:43:36.000000Z","is_email_verified":true,"profile_image_path":null,"password_last_changed":null,"is_teacher":true,"is_student":false,"is_academy":true,"teacher_modules":["teacher-list-services","teacher-basic-profile","teacher-social-info","teacher-profile-display","teacher-calendly","teacher-events","teacher-broadcasts","teacher-blogs","teacher-archives","teacher-certifications","teacher-appointment"],"academy_modules":[],"login_info":{"id":95,"user_id":145,"country_id":1,"state_id":1,"city_id":1,"name":"Teacher One Teacher One","first_name":"Teacher One","last_name":"Teacher One","description":"Teacher One","address_line_1":"Teacher One","address_line_2":"Teacher One","user_name":"TeacherOne","zip_code":"Teacher One","is_approved":1,"approved_at":"2025-04-25T13:49:59.000000Z","is_active":1,"is_featured":0,"icon":null,"image":"/files/profile_images/1752067325image_picker_A7B5B388-DA07-449A-B08F-2E9859D80E7A-29870-0000009FE78CCF3C.jpg","cover_image":null,"rating":0,"teacher_category_ids":[],"teacher_categories":[],"created_at":"2025-04-25T08:43:36.000000Z","updated_at":"2025-09-02T06:42:19.000000Z"},"created_at":"2025-04-25T08:43:36.000000Z","updated_at":"2025-04-25T08:43:36.000000Z","deleted_at":null}},
+                query: {
+                    isEncrypted: false,
+                },
+                transports: ["websocket"],
+                forceNew: true,
+                autoConnect: true,
+            });
+
+            socket.on("connect", () => {
+                console.log("Connected to server");
+            });
+
+            socket.on("disconnect", () => {
+                console.log("Disconnected from server");
+            });
+
+            socket.on("error", (error) => {
+                console.error("Socket error:", error);
+            });
+        </script>
+    </body>
+</html>
